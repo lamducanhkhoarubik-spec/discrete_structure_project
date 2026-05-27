@@ -12,6 +12,14 @@ void printPath(PathNode* head) {
         head = head->next;
     }
 }
+// --- Giải phóng bộ nhớ ---
+void freePath(PathNode* head) {
+    while (head != nullptr) {
+        PathNode* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
 
 int main() {
     cout <<"==============================\n";
@@ -83,33 +91,52 @@ int main() {
 };
  // Mode 1
 cout <<"Mode 1 Solution Path";
-PathNode * r7 = findPathInMaze ( maze , 5 , 5 , 4 , 0 , 0 , 4 , 1) ;
+PathNode * r7 = findWarehousePath ( maze , 5 , 5 , 4 , 0 , 0 , 4 , 1) ;
 printPath (r7) ;
 // Mode 2
 cout <<"\nMode 2 Solution Path";
-PathNode * r8 = findPathInMaze ( maze , 5 , 5 , 4 , 0 , 0 , 4 , 2) ;
+PathNode * r8 = findWarehousePath ( maze , 5 , 5 , 4 , 0 , 0 , 4 , 2) ;
 printPath (r8); 
+
+
     cout <<"==============================\n";
     cout <<"        TASK 4 TEST           \n";
     cout <<"==============================\n";
-
-int floorPlan[100][100] = {
-    {0,0,0,0,0},
-    {0,1,1,0,0},
-    {0,0,0,1,0},
-    {0,1,0,0,0},
-    {0,0,0,0,0}
+    int r = 5, c = 5;
+    int floorPlan [100][100] = {
+     {0 ,0 ,0 ,0 ,0} ,
+     {0 ,1 ,1 ,0 ,0} ,
+     {0 ,0 ,0 ,1 ,0} ,
+     {0 ,1 ,0 ,0 ,0} ,
+     {0 ,0 ,0 ,0 ,0}
 };
-double W[100][100] = {};
-
-// Mode 1
-cout <<"Mode 1 Solution Path";
-PathNode* r9 = findEvacuationPath(floorPlan,5,5,4,0,0,4,W,1);
-printPath(r9);
-
-// Mode 2
-cout <<"\nMode 2 Solution Path";
-PathNode* r10 = findEvacuationPath(floorPlan,5,5,4,0,0,4,W,2);
-printPath(r10);
+    int startX = 4;
+    int startY = 0;
+    int goalX = 0;
+    int goalY = 4;
+    
+    double weightMatrix[100][100];
+    PathNode* OutPath_1;
+    PathNode* OutPath_2;
+    
+    OutPath_1 = findEvacuationPath(floorPlan, r, c, startX, startY, goalX, goalY, weightMatrix, 1);
+    OutPath_2 = findEvacuationPath(floorPlan, r, c, startX, startY, goalX, goalY, weightMatrix, 2);
+    // In kết quả đường đi
+    cout <<"\nMode 1 Solution Path:\n";
+    printPath(OutPath_1);
+    cout <<"\nMode 2 Solution Path: \n";
+    printPath(OutPath_2);
+    
+    cout << "Part of weight Matrix\n";
+    for(int i = 0; i < 10; i++) {
+        for(int j = 0; j < 10; j++) {
+            cout << weightMatrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+    freePath(OutPath_1);
+    freePath(OutPath_2);
     return 0;
 }
+
+

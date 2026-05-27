@@ -6,7 +6,7 @@
 ![C++](https://img.shields.io/badge/C++-17-blue?style=flat-square&logo=c%2B%2B)
 ![A*](https://img.shields.io/badge/A*-Pathfinding-red?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-
+**Lam Duc Anh Khoa**
 **University of Technology — Vietnam National University, HCM City**
 
 </div>

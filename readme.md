@@ -7,8 +7,8 @@
 ![A*](https://img.shields.io/badge/A*-Pathfinding-red?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-**Lam Duc Anh Khoa** 
-###**University of Technology — Vietnam National University, HCM City**
+<h3><strong>Lam Duc Anh Khoa</strong></h3>
+<p><strong>University of Technology — Vietnam National University, HCM City</strong></p>
 
 </div>
 
